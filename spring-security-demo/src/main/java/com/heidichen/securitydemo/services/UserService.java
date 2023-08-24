@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.heidichen.securitydemo.models.Role;
 import com.heidichen.securitydemo.models.User;
 import com.heidichen.securitydemo.repositories.RoleRepository;
 import com.heidichen.securitydemo.repositories.UserRepository;
@@ -26,14 +27,14 @@ public class UserService {
 	    // 1
 	    public void saveWithUserRole(User user) {
 	        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-	        user.setRoles(roleRepository.findByName("ROLE_USER"));
+	        
 	        userRepository.save(user);
 	    }
 	     
 	     // 2 
 	    public void saveUserWithAdminRole(User user) {
 	        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-	        user.setRoles(roleRepository.findByName("ROLE_ADMIN"));
+	        
 	        userRepository.save(user);
 	    }    
 	    
@@ -49,10 +50,7 @@ public class UserService {
 	    	userRepository.save(user);
 		}
 	    
-	    public User upgradeUser(User user) {
-			user.setRoles(roleRepository.findByName("ROLE_ADMIN"));
-			return userRepository.save(user);
-		}
+	    
 		
 		public void deleteUser(User user) {
 			userRepository.delete(user);
@@ -65,4 +63,6 @@ public class UserService {
 	    	}
 	    	return null;
 	    }
+	    
+	    
 }

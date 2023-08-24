@@ -2,6 +2,7 @@ package com.heidichen.securitydemo.controllers;
 
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.heidichen.securitydemo.models.Role;
 import com.heidichen.securitydemo.models.User;
+import com.heidichen.securitydemo.services.RoleService;
 import com.heidichen.securitydemo.services.UserService;
 import com.heidichen.securitydemo.validator.UserValidator;
 
@@ -29,7 +32,8 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
-	
+	@Autowired
+	private RoleService RoleService;
 	
 	@Autowired
 	private UserValidator userValidator;
@@ -44,7 +48,9 @@ public class UserController {
 	}
 	
     @RequestMapping("/register")
-    public String registerForm( @ModelAttribute("user") User user ) {
+    public String registerForm(@ModelAttribute("user") User user,Model model) {
+    	List<Role> AllRoles=RoleService.allRoles();
+        model.addAttribute("AllRoles", AllRoles);
         return "registrationPage.jsp";
     }
     
@@ -53,6 +59,8 @@ public class UserController {
     		@ModelAttribute("user") User user,
     		@RequestParam(value="error", required=false) String error, 
     		@RequestParam(value="logout", required=false) String logout, Model model, Principal principal) {
+    	 List<Role> AllRoles=RoleService.allRoles();
+         model.addAttribute("AllRoles", AllRoles);
     	if(isAuthenticated()) {
     		return "redirect:/home";
     	}
@@ -72,10 +80,14 @@ public class UserController {
     public String registration(@Valid @ModelAttribute("user") User user, 
     		BindingResult result, Model model,HttpServletRequest request) {
         userValidator.validate(user, result);
+       
         if (result.hasErrors()) {
+        	 List<Role> AllRoles=RoleService.allRoles();
+             model.addAttribute("AllRoles", AllRoles);
             return "registrationPage.jsp";
         }
         
+      
         String password = user.getPassword();
         userService.saveWithUserRole(user);
 //        userService.saveUserWithAdminRole(user);

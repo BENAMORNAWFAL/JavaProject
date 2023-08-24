@@ -3,6 +3,9 @@ package com.heidichen.securitydemo.models;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -25,11 +28,18 @@ public class User {
 	private String username;
 	// NEW
 	@Size(min = 5)
+	
+	
 	private String password;
 	@Transient
 	private String passwordConfirmation;
+	@Column(updatable=false)
+    @DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
+		
+    @DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updatedAt;
+    
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<Role> roles;
