@@ -34,6 +34,8 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private RoleService RoleService;
+	@Autowired
+	private User userrole;
 	
 	@Autowired
 	private UserValidator userValidator;
@@ -111,7 +113,29 @@ public class UserController {
         // 1
         String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
-        return "homePage.jsp";
+
+        
+        User currentUser=userService.findByUsername(username);
+        List<Role> role=userService.findByUsername(username).getRoles();
+        model.addAttribute("currentRole", role);
+        String RoleOfUser="";
+        for(Role role1 :currentUser.getRoles()) {
+        	System.out.println(RoleOfUser);
+        	RoleOfUser=role1.getName();
+        }
+        System.out.println(RoleOfUser);
+        if(RoleOfUser=="Scrum Master") {
+        	
+        		return "dashboardscrum.jsp";
+        	
+         	
+         }else if(RoleOfUser=="Developer") {
+         	return "dashboarddeveloper.jsp";
+         }
+        
+        return "dashboardowner.jsp";
+        
+        
     }
     
     @RequestMapping("/admin")

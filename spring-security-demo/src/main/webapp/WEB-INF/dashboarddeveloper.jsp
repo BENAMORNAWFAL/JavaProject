@@ -6,11 +6,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Welcome Page</title>
+<title>Welcome Developer</title>
 </head>
 <body>
     <h1>Welcome Page <c:out value="${currentUser.username}"></c:out></h1>
-    
+    <c:forEach items="${currentRole}" var="role">
+    	<p><c:out value="${role.name}" /></p>
+    </c:forEach>
     <form id="logoutForm" method="POST" action="/logout">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <input type="submit" value="Logout!" />

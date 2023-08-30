@@ -27,7 +27,7 @@ public class RoleService {
 			}
 			
 			// READ ONE
-			public Role findDojo(Long id) {
+			public Role findRole(Long id) {
 				
 				Optional<Role> maybeRole = RoleRepo.findById(id);
 				if(maybeRole.isPresent()) {

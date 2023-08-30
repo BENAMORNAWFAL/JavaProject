@@ -10,8 +10,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
+
+import com.heidichen.securitydemo.models.User;
+
 
 @EnableWebSecurity
 @Configuration
@@ -22,7 +24,12 @@ public class WebSecurityConfig {
 	private HandlerMappingIntrospector introspector;
 	
 	private UserDetailsService userDetailsService;
-
+	
+	@Bean
+    public User user() {
+        return new User();
+    }
+	
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
 		return new BCryptPasswordEncoder();

@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Size;
@@ -40,10 +41,25 @@ public class User {
     @DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updatedAt;
     
+    //Many to Many With Roles
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<Role> roles;
-
+	
+	//Many To Many With Meetings
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "users_meets", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "meeting_id"))
+	private List<Meeting> meetings;
+	
+	//Many To Many With Tasks
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "users_tasks", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "task_id"))
+	private List<Task> tasks;
+	
+	//1:M with project
+ 	@OneToMany(mappedBy="user",fetch=FetchType.LAZY)
+ 	List<Project> listprojects;
+	
 	public User() {
 	}
 
@@ -96,11 +112,35 @@ public class User {
 	}
 
 	public List<Role> getRoles() {
-		return roles;
+		return this.roles;
 	}
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	public List<Meeting> getMeetings() {
+		return meetings;
+	}
+
+	public void setMeetings(List<Meeting> meetings) {
+		this.meetings = meetings;
+	}
+
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
+
+	public List<Project> getListprojects() {
+		return listprojects;
+	}
+
+	public void setListprojects(List<Project> listprojects) {
+		this.listprojects = listprojects;
 	}
 
 }
