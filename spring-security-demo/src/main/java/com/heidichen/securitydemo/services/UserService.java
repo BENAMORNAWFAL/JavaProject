@@ -13,6 +13,7 @@ import com.heidichen.securitydemo.repositories.UserRepository;
 
 @Service
 public class UserService {
+	
 	 private UserRepository userRepository;
 	    private RoleRepository roleRepository;
 	    private BCryptPasswordEncoder bCryptPasswordEncoder;

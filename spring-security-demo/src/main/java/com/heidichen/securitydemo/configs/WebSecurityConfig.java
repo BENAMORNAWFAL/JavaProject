@@ -65,7 +65,7 @@ public class WebSecurityConfig {
 //					.permitAll());
 //		return http.build();
 //	}	
-	
+
 	
 	@Bean
 	protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -76,15 +76,16 @@ public class WebSecurityConfig {
 							new MvcRequestMatcher(introspector, "/css/**"),
 							new MvcRequestMatcher(introspector,"/js/**"),
 							new MvcRequestMatcher(introspector,"/login"),
-							new MvcRequestMatcher(introspector,"/register")
+							new MvcRequestMatcher(introspector,"/authentication/register")
 							).permitAll()
 					.requestMatchers(
 							new MvcRequestMatcher(introspector,"/admin/**")
-							).hasAnyRole("ADMIN", "SUPER_ADMIN")
+							).hasAnyRole("Owner", "Scrum_Master","Developer")
 					.requestMatchers(
 							new MvcRequestMatcher(introspector,"/"),
 							new MvcRequestMatcher(introspector,"/home")
 							).authenticated().anyRequest().permitAll()
+					
 			)
 			.formLogin(formLogin-> formLogin
 					.usernameParameter("username")

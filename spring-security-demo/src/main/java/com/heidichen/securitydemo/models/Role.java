@@ -1,7 +1,9 @@
 package com.heidichen.securitydemo.models;
 
-import java.util.Arrays;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,7 +21,8 @@ public class Role {
     
     private String name;
    
-    
+    @JsonManagedReference
+    @JsonBackReference
     @ManyToMany(mappedBy = "roles")
     private List<User> users;
     
