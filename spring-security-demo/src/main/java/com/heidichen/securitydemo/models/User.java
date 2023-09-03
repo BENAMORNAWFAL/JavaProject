@@ -5,8 +5,7 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,13 +15,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class User {
 	@Id
 	@GeneratedValue
@@ -33,7 +36,13 @@ public class User {
 	// NEW
 	@Size(min = 5)
 	
+	@NotEmpty(message="Email is required!")
+    @Email(message="Please enter a valid email!")
+    private String email;
 	
+	
+	
+
 	private String password;
 	@Transient
 	private String passwordConfirmation;
@@ -46,13 +55,15 @@ public class User {
     
     //Many to Many With Roles
   
-   	
+    // M:1 with User
+  	@ManyToOne(fetch=FetchType.LAZY)
+  	@JoinColumn(name="role_id")
+  	private Role role;
 
     
-    @JsonBackReference
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private List<Role> roles;
+//	@ManyToMany(fetch = FetchType.EAGER)
+//	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+//	private List<Role> roles;
 	
 	//Many To Many With Meetings
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -85,6 +96,14 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -119,13 +138,7 @@ public class User {
 		this.updatedAt = updatedAt;
 	}
 
-	public List<Role> getRoles() {
-		return this.roles;
-	}
-
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
+	
 
 	public List<Meeting> getMeetings() {
 		return meetings;
@@ -149,6 +162,14 @@ public class User {
 
 	public void setListprojects(List<Project> listprojects) {
 		this.listprojects = listprojects;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 }

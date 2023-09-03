@@ -1,69 +1,77 @@
 package com.heidichen.securitydemo.services;
 
-import java.util.List;
 import java.util.Optional;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
-import com.heidichen.securitydemo.models.Role;
+import com.heidichen.securitydemo.models.LoginUser;
 import com.heidichen.securitydemo.models.User;
-import com.heidichen.securitydemo.repositories.RoleRepository;
 import com.heidichen.securitydemo.repositories.UserRepository;
 
 @Service
 public class UserService {
 	
-	 private UserRepository userRepository;
-	    private RoleRepository roleRepository;
-	    private BCryptPasswordEncoder bCryptPasswordEncoder;
-	    
-	    public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder)     {
-	        this.userRepository = userRepository;
-	        this.roleRepository = roleRepository;
-	        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-	    }
-	    
-	    
-	    // 1
-	    public void saveWithUserRole(User user) {
-	        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-	        
-	        userRepository.save(user);
-	    }
-	     
-	     // 2 
-	    public void saveUserWithAdminRole(User user) {
-	        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-	        
-	        userRepository.save(user);
-	    }    
-	    
-	    // 3
-	    public User findByUsername(String username) {
-	        return userRepository.findByUsername(username);
-	    }
-	    public List<User> allUsers(){
-	    	return userRepository.findAll();
-	    }
-	    
-	    public void updateUser(User user) {
-	    	userRepository.save(user);
+	@Autowired
+	private UserRepository userRepo;
+
+	// TO-DO: Write register and login methods!
+	public User register(User newUser, BindingResult result) {
+		// TO-DO: Additional validations!
+		// Reject if email is taken
+		Optional<User> potentialUser = userRepo.findByEmail(newUser.getEmail());
+		if(potentialUser.isPresent()) {
+			result.rejectValue("email", "registerError", "Email is Taken");
 		}
-	    
-	    
+		// Does the entered password match the confirmation password?
+		if(!newUser.getPassword().equals(newUser.getPasswordConfirmation())) {
+			result.rejectValue("password", "registerError", "passwords does not match");
+		}
 		
-		public void deleteUser(User user) {
-			userRepository.delete(user);
+		if(result.hasErrors()) {
+			return null;
+		}else {
+			// Hash and set password, save the user to database
+			String hashdPW = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt());
+			newUser.setPassword(hashdPW);
+			// SAVE the USER
+			return userRepo.save(newUser);
 		}
-	    
-	    public User findById(Long id) {
-	    	Optional<User> potentialUser = userRepository.findById(id);
-	    	if(potentialUser.isPresent()) {
-	    		return potentialUser.get();
-	    	}
-	    	return null;
-	    }
-	    
+		
+	}
+
+	public User login(LoginUser newLoginObject, BindingResult result) {
+		// TO-DO: Additional validations!
+		// FIND IF USER IS PRESENT IN DB
+		Optional<User> potentialUser = userRepo.findByEmail(newLoginObject.getEmail());
+		if(!potentialUser.isPresent()) {
+			result.rejectValue("email", "loginErrors", "Email is not found");
+		}else {
+			User user = potentialUser.get();
+			// Check password
+			if(!BCrypt.checkpw(newLoginObject.getPassword(), user.getPassword() )) {
+				result.rejectValue("password", "loginErrors", "Invalid Password");
+			}
+			if(result.hasErrors()) {
+				return null;
+			}else {
+				return user;
+			}
+		}
+		
+		return null;
+	}
+	
+	//   READ ONE
+    public User findOne(Long id) {
+    	Optional<User> maybeUser = userRepo.findById(id);
+    	if(maybeUser.isPresent()) {
+    		return maybeUser.get();
+    	} else {
+    		return null;
+    	}
+}
 	    
 }
