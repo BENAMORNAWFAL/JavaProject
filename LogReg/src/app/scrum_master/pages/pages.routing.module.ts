@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { AppDashboardComponent } from './dashboard/dashboard.component';
+import { AppscrumDashboardComponent } from './dashboard/dashboard.component';
 
 export const PagesRoutesscrum: Routes = [
   {
     path: '',
-    component: AppDashboardComponent,
+    component: AppscrumDashboardComponent,
     data: {
       title: 'Starter Page',
     },

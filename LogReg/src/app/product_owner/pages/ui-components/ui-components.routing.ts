@@ -10,6 +10,7 @@ export const UiComponentsRoutes: Routes = [
   {
     path: '',
     children: [
+      
       {
         path: 'badge',
         component: AppBadgeComponent,

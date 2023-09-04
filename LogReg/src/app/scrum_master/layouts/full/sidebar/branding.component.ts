@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-branding',
+  selector: 'app-brandingscrum',
   template: `
     <div class="branding">
       <a href="/">

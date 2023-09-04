@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { NavService } from '../../../../../services/nav.service';
 
 @Component({
-  selector: 'app-nav-item',
+  selector: 'app-nav-itemscrum',
   templateUrl: './nav-item.component.html',
   styleUrls: [],
 })

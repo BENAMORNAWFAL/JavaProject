@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 
 // ui
-import { AppBadgeComponent } from './badge/badge.component';
-import { AppListsComponent } from './Scrumlists/lists.component';
-import { AppListsDevComponent } from './Developerlists/listsdev.component';
+import { AppBadgescrumComponent } from './badge/badge.component';
+import { AppListsscrumComponent } from './Scrumlists/lists.component';
+import { AppListsscrumDevComponent } from './Developerlists/listsdev.component';
 
 
 export const UiComponentsRoutes: Routes = [
@@ -12,15 +12,15 @@ export const UiComponentsRoutes: Routes = [
     children: [
       {
         path: 'badge',
-        component: AppBadgeComponent,
+        component: AppBadgescrumComponent,
       },
       {
         path: 'Scrumlists',
-        component: AppListsComponent,
+        component: AppListsscrumComponent,
       },
       {
         path: 'Developerlists',
-        component: AppListsDevComponent,
+        component: AppListsscrumDevComponent,
       },
      
     ],

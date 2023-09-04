@@ -58,12 +58,13 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       {
-        path: 'dashboardscrum',
+        path: 'scrum/dashboard',
         loadChildren: () =>
           import('./scrum_master/pages/pages.module').then((m) => m.PagesModule),
       },
+     
       {
-        path: 'ui-componentsscrum',
+        path: 'ui-componentscrum',
         loadChildren: () =>
           import('./scrum_master/pages/ui-components/ui-components.module').then(
             (m) => m.UicomponentsModule

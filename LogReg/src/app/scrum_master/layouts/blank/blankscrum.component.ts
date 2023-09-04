@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-blank',
+  selector: 'app-blankscrum',
   templateUrl: './blank.component.html',
   styleUrls: [],
 })

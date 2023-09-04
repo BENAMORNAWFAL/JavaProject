@@ -3,7 +3,7 @@ import { navItems } from './sidebar-data';
 import { NavService } from '../../../../services/nav.service';
 
 @Component({
-  selector: 'app-sidebar',
+  selector: 'app-sidebarscrum',
   templateUrl: './sidebar.component.html',
 })
 export class SidebarComponentscrum implements OnInit {

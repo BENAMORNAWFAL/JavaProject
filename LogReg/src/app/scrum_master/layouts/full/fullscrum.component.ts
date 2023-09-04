@@ -8,7 +8,7 @@ const TABLET_VIEW = 'screen and (min-width: 769px) and (max-width: 1024px)';
 const MONITOR_VIEW = 'screen and (min-width: 1024px)';
 
 @Component({
-  selector: 'app-full',
+  selector: 'app-full-2',
   templateUrl: './full.component.html',
   styleUrls: [],
 })

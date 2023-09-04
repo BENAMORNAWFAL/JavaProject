@@ -3,7 +3,7 @@ import { navItems } from './sidebar-data';
 import { NavService } from '../../../../services/nav.service';
 
 @Component({
-  selector: 'app-sidebar-1',
+  selector: 'app-sidebarowner',
   templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent implements OnInit {

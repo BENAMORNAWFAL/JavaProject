@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-headerscrum',
   templateUrl: './header.component.html',
   encapsulation: ViewEncapsulation.None,
 })

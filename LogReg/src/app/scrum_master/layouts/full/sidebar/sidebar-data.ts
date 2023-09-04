@@ -7,7 +7,7 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Dashboard',
     iconName: 'layout-dashboard',
-    route: '/dashboard',
+    route: '/scrum/dashboard',
   },
   {
     navCap: 'Ui Components',
@@ -17,11 +17,7 @@ export const navItems: NavItem[] = [
     iconName: 'rosette',
     route: '/ui-components/badge',
   },
-  // {
-  //   displayName: 'Chips',
-  //   iconName: 'poker-chip',
-  //   route: '/ui-components/chips',
-  // },
+ 
   {
     displayName: 'Developers List',
     iconName: 'list',

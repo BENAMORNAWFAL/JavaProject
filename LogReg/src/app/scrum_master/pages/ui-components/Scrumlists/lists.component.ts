@@ -6,11 +6,11 @@ export interface Section {
 }
 
 @Component({
-  selector: 'app-listsScrum',
+  selector: 'app-listsScrumscrum',
   templateUrl: './lists.component.html',
  
 })
-export class AppListsComponent {
+export class AppListsscrumComponent {
   constructor() {}
   
   typesOfShoes: string[] = ['Loafers', 'Sneakers'];

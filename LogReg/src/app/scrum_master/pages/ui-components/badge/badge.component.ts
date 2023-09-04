@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-badge',
+  selector: 'app-badgescrum',
   templateUrl: './badge.component.html'
 })
-export class AppBadgeComponent implements OnInit {
+export class AppBadgescrumComponent implements OnInit {
 
   constructor() { }
 

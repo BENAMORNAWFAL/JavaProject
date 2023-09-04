@@ -126,7 +126,7 @@ const ELEMENT_DATA: productsData[] = [
 ];
 
 @Component({
-  selector: 'app-dashboard-1',
+  selector: 'app-dashboardowner',
   templateUrl: './dashboard.component.html',
   encapsulation: ViewEncapsulation.None,
 })

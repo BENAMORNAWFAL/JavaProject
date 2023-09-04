@@ -16,7 +16,7 @@
     (closedStart)="onSidenavClosedStart()"
     class="sidebarNav"
   >
-    <app-sidebar></app-sidebar>
+    <app-sidebarowner></app-sidebarowner>
   </mat-sidenav>
   <!-- ============================================================== -->
   <!-- Main Content -->
@@ -26,11 +26,11 @@
     <!-- VerticalHeader -->
     <!-- ============================================================== -->
 
-    <app-header
+    <app-headerowner
       [showToggle]="!isOver"
       (toggleCollapsed)="toggleCollapsed()"
       (toggleMobileNav)="sidenav.toggle()"
-    ></app-header>
+    ></app-headerowner>
 
     <main class="pageWrapper">
       <!-- ============================================================== -->

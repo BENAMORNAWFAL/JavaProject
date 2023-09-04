@@ -11,10 +11,10 @@ import * as TablerIcons from 'angular-tabler-icons/icons';
 import { UiComponentsRoutes } from './ui-components.routing';
 
 // ui components
-import { AppBadgeComponent } from './badge/badge.component';
-import { AppListsComponent } from './Scrumlists/lists.component';
-import { AppListsDevComponent } from './Developerlists/listsdev.component';
-import { AppMenuComponent } from './menu/menu.component';
+import { AppBadgescrumComponent } from './badge/badge.component';
+import { AppListsscrumComponent } from './Scrumlists/lists.component';
+import { AppListsscrumDevComponent } from './Developerlists/listsdev.component';
+import { AppMenuComponent } from '../menu/menu.component';
 import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
@@ -28,9 +28,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatNativeDateModule,
   ],
   declarations: [
-    AppBadgeComponent,
-    AppListsComponent,
-    AppListsDevComponent,
+    AppBadgescrumComponent,
+    AppListsscrumComponent,
+    AppListsscrumDevComponent,
     AppMenuComponent,
   ],
 })
