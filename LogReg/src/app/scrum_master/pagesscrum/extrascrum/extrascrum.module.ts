@@ -8,7 +8,7 @@ import { MaterialModule } from '../../../material.module';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
 
-import { ExtraRoutes } from './extra.routing';
+import { ExtrascrumRoutes } from './extra.routing';
 import { AppIconsComponent } from './icons/icons.component';
 import { AppSamplePageComponent } from './sample-page/sample-page.component';
 
@@ -16,7 +16,7 @@ import { AppSamplePageComponent } from './sample-page/sample-page.component';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(ExtraRoutes),
+    RouterModule.forChild(ExtrascrumRoutes),
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
@@ -27,4 +27,4 @@ import { AppSamplePageComponent } from './sample-page/sample-page.component';
     AppSamplePageComponent
   ],
 })
-export class ExtraModule {}
+export class ExtrascrumModule {}

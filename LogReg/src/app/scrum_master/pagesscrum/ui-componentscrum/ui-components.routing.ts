@@ -6,7 +6,7 @@ import { AppListsscrumComponent } from './Scrumlists/lists.component';
 import { AppListsscrumDevComponent } from './Developerlists/listsdev.component';
 
 
-export const UiComponentsRoutes: Routes = [
+export const UiComponentscrumRoutes: Routes = [
   {
     path: '',
     children: [

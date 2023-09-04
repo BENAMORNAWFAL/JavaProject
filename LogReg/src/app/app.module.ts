@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PagesRoutes } from './product_owner/pages/pages.routing.module';
-import { PagesRoutesscrum } from './scrum_master/pages/pages.routing.module';
+import { PagesRoutesscrum } from './scrum_master/pagesscrum/pages.routing.module';
 import { NgApexchartsModule } from 'ng-apexcharts';
 // icons
 import { TablerIconsModule } from 'angular-tabler-icons';

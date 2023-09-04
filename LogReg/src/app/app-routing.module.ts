@@ -55,25 +55,25 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: '/scrum/dashboard',
-        pathMatch: 'full',
+        pathMatch: 'fullscrum',
       },
       {
         path: 'scrum/dashboard',
         loadChildren: () =>
-          import('./scrum_master/pages/pages.module').then((m) => m.PagesModule),
+          import('./scrum_master/pagesscrum/pagesscrum.module').then((m) => m.PagesscrumModule),
       },
      
       {
         path: 'ui-componentscrum',
         loadChildren: () =>
-          import('./scrum_master/pages/ui-components/ui-components.module').then(
-            (m) => m.UicomponentsModule
+          import('./scrum_master/pagesscrum/ui-componentscrum/ui-componentscrum.module').then(
+            (m) => m.UicomponentscrumModule
           ),
       },
       {
         path: 'extrascrum',
         loadChildren: () =>
-          import('./scrum_master/pages/extra/extra.module').then((m) => m.ExtraModule),
+          import('./scrum_master/pagesscrum/extrascrum/extrascrum.module').then((m) => m.ExtrascrumModule),
       },
     ],
   },

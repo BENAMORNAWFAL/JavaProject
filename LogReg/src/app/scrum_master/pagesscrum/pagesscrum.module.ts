@@ -22,4 +22,4 @@ import { AppscrumDashboardComponent } from './dashboard/dashboard.component';
   ],
   exports: [TablerIconsModule],
 })
-export class PagesModule {}
+export class PagesscrumModule {}
