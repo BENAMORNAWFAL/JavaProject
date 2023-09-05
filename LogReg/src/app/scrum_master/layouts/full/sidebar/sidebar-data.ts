@@ -10,23 +10,25 @@ export const navItems: NavItem[] = [
     route: '/scrum/dashboard',
   },
   {
-    navCap: 'Ui Components',
+    navCap: 'Menu',
   },
+ 
   {
     displayName: 'Badge',
     iconName: 'rosette',
-    route: '/ui-components/badge',
+    route: '/ui-componentscrum/badge',
   },
+ 
  
   {
     displayName: 'Developers List',
     iconName: 'list',
-    route: '/ui-components/Scrumlists',
+    route: '/ui-componentscrum/Scrumlists',
   },
   {
     displayName: 'Tasks Lists',
     iconName: 'list',
-    route: '/ui-components/Developerlists',
+    route: '/ui-componentscrum/Developerlists',
   },
 
  

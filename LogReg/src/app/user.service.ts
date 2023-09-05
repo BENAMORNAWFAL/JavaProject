@@ -11,13 +11,5 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  getRoles(){
-    return this.http.get(this.url+'/authentication/roles')
-     
-  }
-
-  registerUser(profile:any){
-    console.log("hello from user.service",profile)
-    return this.http.post(this.url+'/authentication/register',profile)
-  }
+ 
 }

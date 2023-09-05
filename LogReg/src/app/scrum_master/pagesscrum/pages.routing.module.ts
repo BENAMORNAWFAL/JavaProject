@@ -6,7 +6,7 @@ export const PagesRoutesscrum: Routes = [
     path: '',
     component: AppscrumDashboardComponent,
     data: {
-      title: 'Starter Page',
+      title: 'Second Page',
     },
   },
 ];
