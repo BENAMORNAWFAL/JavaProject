@@ -10,9 +10,14 @@ import { CommonModule } from '@angular/common';
 import { PagesRoutes } from './product_owner/pages/pages.routing.module';
 import { PagesRoutesscrum } from './scrum_master/pagesscrum/pages.routing.module';
 import { NgApexchartsModule } from 'ng-apexcharts';
+
 // icons
 import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
+
+// HomePage
+import { HomePageComponent } from './product_owner/pages/homepage/homepage.component';
+
 
 //Import all material modules
 import { MaterialModule } from './material.module';
@@ -57,6 +62,8 @@ import { AppNavItemComponentscrum } from './scrum_master/layouts/full/sidebar/na
     HeaderComponentscrum,
     BrandingComponentscrum,
     AppNavItemComponentscrum,
+    //homepage
+    HomePageComponent
   ],
   imports: [
     MatSelectModule,

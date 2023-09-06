@@ -5,11 +5,32 @@ html .topbar {
   z-index: 9;
   height: $header-height;
 }
-
+html .toppbar {
+  background: $toollbar;
+  height: 450px;
+  top: 0;
+  z-index: 9;
+}
+.space{
+  display: inline;
+}
 .topbar-dd {
   min-width: 200px !important;
 }
-
+.toppbar-dd {
+  min-width: 200px !important;
+}
 .object-cover {
   object-fit: cover;
+}
+.taskmaster-connect {
+  font-size: 36px;
+  color: #0051a4; 
+  font-family: Arial, sans-serif;
+  justify-content: left;
+}
+
+.connect {
+  color: #0079BF; /* Set a different shade of blue for the "Connect" text */
+  font-family: Arial, sans-serif;
 }

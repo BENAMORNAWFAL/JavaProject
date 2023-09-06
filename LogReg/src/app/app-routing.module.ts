@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { FullComponent } from './product_owner/layouts/full/full.component';
 import {FullComponentscrum} from './scrum_master/layouts/full/fullscrum.component'
+import { HomePageComponent } from './product_owner/pages/homepage/homepage.component';
 const routes: Routes = [
   
   {
@@ -16,13 +17,16 @@ const routes: Routes = [
             (m) => m.AuthenticationModule
           ),
       },
+    
     ]
   },
 
   {
+    
     path: '',
     component: FullComponent,
     children: [
+      
       {
         path: '',
         redirectTo: '/owner/dashboard',
@@ -55,7 +59,7 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: '/scrum/dashboard',
-        pathMatch: 'fullscrum',
+        pathMatch: 'full',
       },
       {
         path: 'scrum/dashboard',
@@ -77,7 +81,23 @@ const routes: Routes = [
       },
     ],
   },
- 
+
+  {
+    
+    path: '',
+    component: HomePageComponent,
+    children: [
+  {
+    path: '',
+    redirectTo: '/homepage',
+    pathMatch: 'full',
+  },
+  {
+    path: 'homepage',
+    loadChildren: () =>
+      import('./product_owner/pages/pages.module').then((m) => m.PagesModule),
+  },]
+  },
 ];
 
 @NgModule({
