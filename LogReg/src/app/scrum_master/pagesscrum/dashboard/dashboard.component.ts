@@ -141,9 +141,9 @@ export class AppscrumDashboardComponent {
   dataSource = ELEMENT_DATA;
 
   months: month[] = [
-    { value: 'mar', viewValue: 'March 2023' },
-    { value: 'apr', viewValue: 'April 2023' },
-    { value: 'june', viewValue: 'June 2023' },
+    { value: 'mar', viewValue: 'Aout 2023' },
+    { value: 'apr', viewValue: 'September 2023' },
+    // { value: 'june', viewValue: 'June 2023' },
   ];
 
   // recent transaction
@@ -227,7 +227,7 @@ export class AppscrumDashboardComponent {
       series: [
         {
           name: 'Eanings this month',
-          data: [355, 390, 300, 350, 390, 180, 355, 390],
+          data: [400, 390, 300, 350, 390, 180, 355, 390],
           color: '#5D87FF',
         },
         {
@@ -264,14 +264,14 @@ export class AppscrumDashboardComponent {
       xaxis: {
         type: 'category',
         categories: [
-          '16/08',
-          '17/08',
-          '18/08',
-          '19/08',
-          '20/08',
-          '21/08',
-          '22/08',
-          '23/08',
+          '01/03',
+          '04/08',
+          '09/11',
+          '14/16',
+          '17/21',
+          '22/24',
+          '25/29',
+          '30/31',
         ],
         labels: {
           style: { cssClass: 'grey--text lighten-2--text fill-color' },
