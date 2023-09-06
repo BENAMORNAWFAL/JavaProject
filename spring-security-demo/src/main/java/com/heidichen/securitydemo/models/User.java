@@ -53,7 +53,7 @@ public class User {
     @DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updatedAt;
     
-    //Many to Many With Roles
+    
   
     // M:1 with User
   	@ManyToOne(fetch=FetchType.LAZY)
