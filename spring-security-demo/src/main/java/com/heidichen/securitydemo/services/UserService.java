@@ -18,27 +18,28 @@ public class UserService {
 	private UserRepository userRepo;
 
 	// TO-DO: Write register and login methods!
-	public User register(User newUser, BindingResult result) {
+	public User register(User newUser) {
 		// TO-DO: Additional validations!
 		// Reject if email is taken
 		Optional<User> potentialUser = userRepo.findByEmail(newUser.getEmail());
-		if(potentialUser.isPresent()) {
-			result.rejectValue("email", "registerError", "Email is Taken");
-		}
-		// Does the entered password match the confirmation password?
-		if(!newUser.getPassword().equals(newUser.getPasswordConfirmation())) {
-			result.rejectValue("password", "registerError", "passwords does not match");
-		}
-		
-		if(result.hasErrors()) {
-			return null;
-		}else {
+//		if(potentialUser.isPresent()) {
+//			result.rejectValue("email", "registerError", "Email is Taken");
+//		}
+//		// Does the entered password match the confirmation password?
+//		if(!newUser.getPassword().equals(newUser.getPasswordConfirmation())) {
+//			result.rejectValue("password", "registerError", "passwords does not match");
+//		}
+//		
+//		if(result.hasErrors()) {
+//			return null;
+//		}else {
 			// Hash and set password, save the user to database
 			String hashdPW = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt());
 			newUser.setPassword(hashdPW);
 			// SAVE the USER
+			newUser.setRole(newUser.getRole());
 			return userRepo.save(newUser);
-		}
+//		}
 		
 	}
 

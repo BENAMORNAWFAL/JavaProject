@@ -15,6 +15,7 @@ import {
   ApexMarkers,
   ApexResponsive,
 } from 'ng-apexcharts';
+import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
 
 interface month {
   value: string;
@@ -77,7 +78,10 @@ export interface productsData {
   priority: string;
 }
 
-
+export interface Task {
+  date: Date;
+  description: string;
+}
 
 const ELEMENT_DATA: productsData[] = [
   {
@@ -119,11 +123,11 @@ const ELEMENT_DATA: productsData[] = [
 ];
 
 @Component({
-  selector: 'app-dashboardowner',
+  selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   encapsulation: ViewEncapsulation.None,
 })
-export class AppOwnerDashboardComponent{
+export class AppDashboardComponent {
   @ViewChild('chart') chart: ChartComponent = Object.create(null);
 
   public salesOverviewChart!: Partial<salesOverviewChart> | any;
@@ -132,6 +136,36 @@ export class AppOwnerDashboardComponent{
 
   displayedColumns: string[] = ['assigned', 'name', 'priority', 'budget'];
   dataSource = ELEMENT_DATA;
+  view: string = 'month';
+  viewDate: Date = new Date();
+  events: CalendarEvent[] = [
+    // Define your calendar events here, e.g., tasks
+    {
+      start: new Date(),
+      title: 'Task 1',
+    },
+    {
+      start: new Date(),
+      title: 'Task 2',
+    },
+  ];
+
+  selectedDay: CalendarMonthViewDay | null = null; // Declare selectedDay as null initially
+
+  // Function to handle day click event
+  dayClicked(day: CalendarMonthViewDay): void {
+    this.selectedDay = day;
+    this.tasks = this.events
+      .filter((event) =>
+        event.start.toDateString() === this.selectedDay?.date.toDateString()
+      )
+      .map((event) => ({
+        date: event.start,
+        description: event.title as string,
+      }));
+  }
+
+  tasks: Task[] = []; // Initialize it as an empty array
 
   months: month[] = [
     { value: 'mar', viewValue: 'March 2023' },

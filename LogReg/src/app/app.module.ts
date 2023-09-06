@@ -44,6 +44,15 @@ import { HeaderComponentscrum } from './scrum_master/layouts/full/header/header.
 import { BrandingComponentscrum } from './scrum_master/layouts/full/sidebar/branding.component';
 import { AppNavItemComponentscrum } from './scrum_master/layouts/full/sidebar/nav-item/nav-item.component';
 
+//Import Layouts Developer
+import { FullComponentdev } from './Developer/layouts/full/full.component';
+import { BlankComponentdev } from './Developer/layouts/blank/blank.component';
+
+//Vertical Layout Developer
+import { SidebarComponentdev } from './Developer/layouts/full/sidebar/sidebar.component';
+import { HeaderComponentdev } from './Developer/layouts/full/header/header.component';
+import { BrandingComponentdev } from './Developer/layouts/full/sidebar/branding.component';
+import { AppNavItemComponentdev } from './Developer/layouts/full/sidebar/nav-item/nav-item.component';
 
 @NgModule({
   declarations: [
@@ -62,8 +71,18 @@ import { AppNavItemComponentscrum } from './scrum_master/layouts/full/sidebar/na
     HeaderComponentscrum,
     BrandingComponentscrum,
     AppNavItemComponentscrum,
+<<<<<<< HEAD
     //homepage
     HomePageComponent
+=======
+    //Developer components
+    FullComponentdev,
+    BlankComponentdev,
+    SidebarComponentdev,
+    HeaderComponentdev,
+    BrandingComponentdev,
+    AppNavItemComponentdev,
+>>>>>>> 0325f640b6fb22405c7605073fa8ac72012fb73d
   ],
   imports: [
     MatSelectModule,

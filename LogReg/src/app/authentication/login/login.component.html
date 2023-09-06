@@ -54,14 +54,14 @@
               >Username</mat-label
             >
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput />
+              <input matInput [(ngModel)]="loger.username" name="username" />
             </mat-form-field>
             <!-- password -->
             <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
               >Password</mat-label
             >
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput type="password" />
+              <input matInput [(ngModel)]="loger.password" name="password" type="password" />
             </mat-form-field>
 
             <div class="d-flex align-items-center m-b-12">
@@ -72,7 +72,7 @@
                 >Forgot Password ?</a
               >
             </div>
-            <a [routerLink]="['/owner/dashboard']" mat-flat-button color="primary" class="w-100">
+            <a (click)="login()" mat-flat-button color="primary" class="w-100">
               Sign In
             </a>
             <!-- input -->
