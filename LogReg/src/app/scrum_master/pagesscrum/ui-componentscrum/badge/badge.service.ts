@@ -7,19 +7,15 @@ import { HttpClient , HttpHeaders} from '@angular/common/http';
   providedIn: 'root',
 })
 
-export class AppRegisterService {
+export class AppBadgeService {
   private url = 'http://localhost:8080'; // Update with your Spring Boot server URL
 
   constructor(private http: HttpClient) {}
   
-  getRoles(){
-    return this.http.get(this.url+'/roles')
+  getuserconnect(){
+    return this.http.get(this.url+'/badge')
      
   }
   
-  registerUser(user:{username: string, email: string, password: string,passwordConfirmation: string,role_id:any}){
-    console.log("in side app reg")
-    return this.http.post(this.url+'/register', user);
-  }
 }
 

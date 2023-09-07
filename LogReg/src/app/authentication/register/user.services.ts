@@ -1,11 +1,11 @@
 
-export class User {
+// export class User {
     
-    username:String="";
-    email:String="";
-    password:String="";
-    passwordConfirmation:String="";
-    role:String="";
+//     username:String="";
+//     email:String="";
+//     password:String="";
+//     passwordConfirmation:String="";
+//     role:String="";
     
 
-}
+// }

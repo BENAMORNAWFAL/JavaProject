@@ -6,6 +6,9 @@ import jakarta.validation.constraints.Size;
 
 public class LoginUser {
 	
+	@NotEmpty(message="UserName is required!")
+    private String username;
+	
 	@NotEmpty(message="Email is required!")
     @Email(message="Please enter a valid email!")
     private String email;
@@ -15,6 +18,14 @@ public class LoginUser {
     private String password;
     
     public LoginUser() {}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 	public String getEmail() {
 		return email;

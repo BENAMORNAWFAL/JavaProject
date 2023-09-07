@@ -46,11 +46,12 @@ public class UserService {
 	public User login(LoginUser newLoginObject, BindingResult result) {
 		// TO-DO: Additional validations!
 		// FIND IF USER IS PRESENT IN DB
-		Optional<User> potentialUser = userRepo.findByEmail(newLoginObject.getEmail());
+		Optional<User> potentialUser = userRepo.findByUsername(newLoginObject.getUsername());
 		if(!potentialUser.isPresent()) {
-			result.rejectValue("email", "loginErrors", "Email is not found");
+			result.rejectValue("username", "loginErrors", "UserName is not found");
 		}else {
 			User user = potentialUser.get();
+			System.out.printf("user potential",user);
 			// Check password
 			if(!BCrypt.checkpw(newLoginObject.getPassword(), user.getPassword() )) {
 				result.rejectValue("password", "loginErrors", "Invalid Password");
