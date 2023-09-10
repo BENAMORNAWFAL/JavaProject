@@ -13,13 +13,13 @@ export class AppRegisterService {
   constructor(private http: HttpClient) {}
   
   getRoles(){
-    return this.http.get(this.url+'/roles')
+    return this.http.get(this.url+'/authentication/roles')
      
   }
   
   registerUser(user:{username: string, email: string, password: string,passwordConfirmation: string,role_id:any}){
     console.log("in side app reg")
-    return this.http.post(this.url+'/register', user);
+    return this.http.post(this.url+'/authentication/register', user);
   }
 }
 

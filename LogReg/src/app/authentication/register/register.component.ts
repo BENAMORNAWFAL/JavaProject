@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder,FormGroup, FormControl, Validators } from '@angular/forms';
 import { AppRegisterService } from 'src/app/authentication/app-register.service'; // Import the service
-
+import { HttpClient ,HttpErrorResponse} from '@angular/common/http'; // Import HttpClient
+import {User} from './user.services'
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
@@ -18,7 +19,10 @@ export class AppSideRegisterComponent{
   errorMessage = '';
 
   constructor(
+    private authService: AppRegisterService,
+    private fb: FormBuilder,
     private Service: AppRegisterService,
+    private http: HttpClient ,// Inject HttpClient
     private router: Router
   ) { 
     //Read All Roles From DATABASE

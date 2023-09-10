@@ -1,0 +1,120 @@
+<mat-toolbar class="topbar">
+  <!-- Mobile Menu -->
+  <button mat-icon-button (click)="toggleMobileNav.emit()" *ngIf="!showToggle">
+    <i-tabler name="menu-2" class="icon-20 d-flex"></i-tabler>
+  </button>
+
+  <span class="flex-1-auto"></span>
+  <div style="display: flex; justify-content: space-between;width: 100%;align-items: center;">
+    <h1 class="taskmaster-connect">TaskMaster <span class="connect">Connect</span></h1>
+    <p class="space" style="justify-content: space-between" style="display: flex;">
+        <a
+        mat-flat-button
+        target="_blank"
+        class="d-flex justify-content-center"
+        href="/login"
+        >
+        Log in
+        </a>
+        <a
+        mat-flat-button
+        color="primary"
+        target="_blank"
+        class="d-flex justify-content-center"
+        href="/register"
+    >
+    Sign up
+    </a></p>
+  </div>
+</mat-toolbar>
+<mat-toolbar class="toppbar" >
+  <!-- Mobile Menu -->
+  <button mat-icon-button (click)="toggleMobileNav.emit()" *ngIf="!showToggle">
+    <i-tabler name="menu-2" class="icon-20 d-flex"></i-tabler>
+  
+  </button>
+  <div class="space">
+  <h1 style="color: aliceblue; font-size: 1cm;">More than just Project Management</h1><br/>
+ <div style="display: flex;"> <h2 style="color: aliceblue;"><h1 class="taskmaster-connect">TaskMaster <span class="connect">Connect</span></h1> comes with all the necessary features</h2></div><br/>
+  <h2 style="color: aliceblue;">so your team can focus on being productive rather than switching between different tools.</h2>
+     </div>
+
+  <span class="flex-1-auto"></span>
+
+  <!-- --------------------------------------------------------------- -->
+  <!-- profile Dropdown -->
+  <!-- --------------------------------------------------------------- -->
+  <!-- <a
+    mat-flat-button
+    color="primary"
+    href="https://adminmart.com/"
+    target="_blank"
+    class="d-flex justify-content-center"
+  >
+    Download Free
+  </a> -->
+
+  
+</mat-toolbar>
+  
+
+  
+
+            
+<div class="row">
+  <div class="col-sm-6 col-lg-3" *ngFor="let productcard of productcards">
+    <mat-card class="cardWithShadow productcard overflow-hidden">
+      <a routerLink="/widgets/cards">
+        <img
+          src="{{ productcard.imgSrc }}"
+          alt="imgSrc"
+          class="w-100"
+          mat-card-image
+        />
+      </a>
+      <mat-card-content class="p-b-24 p-t-12 position-relative">
+      
+   
+        <mat-card-title class="mat-headline-2 f-s-16 m-b-4"><h2>{{
+          productcard.title
+        }}</h2></mat-card-title>
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center">
+            <h6 class="mat-body-2 f-w-600">{{ productcard.price }}</h6>
+            <span class="f-s-14 m-l-4 text-decoration-line-through"
+              >{{ productcard.rprice }}</span
+            >
+          </div>
+    
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<mat-toolbar class="toppbar">
+  <!-- Mobile Menu -->
+  <button mat-icon-button (click)="toggleMobileNav.emit()" *ngIf="!showToggle">
+    <i-tabler name="menu-2" class="icon-20 d-flex"></i-tabler>
+  </button>
+
+  <span class="flex-1-auto"></span>
+  <div className="contact-container" style="   padding: 20px;
+  text-align: center;">
+    <div className="contact-methodd" style="font-style: italic;"> 
+   <h1 style="color: #4a00f7;size: 9cm;">Thank you for visiting our website!</h1><br/> 
+   <p>If you have any questions, feedback, or need assistance, please don't hesitate to get in touch with us.</p><p>Our dedicated team is here to help and ensure you have an unforgettable travel experience. You can reach us through the following methods:</p></div>
+    <h1 style="color: #3b02c0;size: 1cm;" >Contact Us</h1>
+    <div className="contact-method">
+      <p>📞Call us at: <a href="#" className="twitter-link">+216 54478934</a></p>
+    </div>
+    <div className="contact-method">
+
+      <p> 📧Email us at: <a href="#" className="twitter-link">contact@TaskMasterConnect.com</a></p>
+    </div>
+    <div className="contact-method">
+        <p >Follow us on Twitter: <a href="#" target="_blank" className="twitter-link">@TaskMasterConnect</a></p>
+
+    </div></div>
+
+
+</mat-toolbar>

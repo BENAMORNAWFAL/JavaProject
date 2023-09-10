@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,21 +19,21 @@ import jakarta.persistence.Table;
 public class Meeting {
 		
 	@Id
-	@GeneratedValue
-	private Long id;
-	
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date meetdate;
-	
-	
-	@Column(updatable=false)
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date createdAt;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date updatedAt;
-	
-    @ManyToMany(mappedBy = "meetings")
-    private List<User> users;
+	  @GeneratedValue
+	  private Long id;
+
+	  @DateTimeFormat(pattern = "yyyy-MM-dd''HH:mm:ss.SSSX")
+	  private Date meetdate;
+
+	  @Column(updatable = false)
+	  @DateTimeFormat(pattern = "yyyy-MM-dd")
+	  private Date createdAt;
+
+	  @DateTimeFormat(pattern = "yyyy-MM-dd")
+	  private Date updatedAt;
+
+	  @ManyToMany(mappedBy = "meetings")
+	  private List<User> users;
 
     //EMPTY CONSTRACTURS
     public Meeting() {

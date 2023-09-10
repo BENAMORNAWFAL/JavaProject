@@ -16,7 +16,7 @@ public class MeetingService {
 		private MeetingRepository MeetRep;
 		
 		// READ ALL
-		public List<Meeting> allTasks(){
+		public List<Meeting> all(){
 			return MeetRep.findAll();
 		}
 		

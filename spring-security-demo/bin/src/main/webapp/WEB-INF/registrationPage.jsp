@@ -30,6 +30,17 @@
 			<form:label path="passwordConfirmation">Password Confirmation:</form:label>
 			<form:password path="passwordConfirmation" />
 		</p>
+		<p>
+		
+		<!--      All the Dojos -->
+			<form:label path="roles">Select Role User:</form:label>
+		    <form:select path="roles">
+		    	
+			    <c:forEach items="${AllRoles}" var ="role">
+			    	<form:option value="${role.id }">${role.name }</form:option>
+			    </c:forEach>
+		    </form:select>
+		</p>
 		<input type="submit" value="Register!" />
 	</form:form>
 

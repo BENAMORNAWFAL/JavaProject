@@ -12,8 +12,8 @@ import { UiComponentscrumRoutes } from './ui-components.routing';
 
 // ui components
 import { AppBadgescrumComponent } from './badge/badge.component';
-import { AppListsscrumComponent } from './Scrumlists/lists.component';
-import { AppListsscrumDevComponent } from './Developerlists/listsdev.component';
+import { AppListsscrumComponent } from './developerslist/lists.component';
+import { AppListsscrumDevComponent } from './taskslists/listsdev.component';
 import { AppMenuComponent } from '../menuscrum/menu.component';
 import { MatNativeDateModule } from '@angular/material/core';
 

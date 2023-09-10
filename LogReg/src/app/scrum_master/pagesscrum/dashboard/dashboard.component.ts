@@ -1,4 +1,6 @@
 import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 import {
   ApexChart,
   ChartComponent,
@@ -20,6 +22,14 @@ interface month {
   value: string;
   viewValue: string;
 }
+
+export interface Meeting {
+  meetdate: string; // Use the correct data type for meetdate (e.g., string)
+  createdAt: string; // Use the correct data type for createdAt (e.g., string)
+  updatedAt: string; // Use the correct data type for updatedAt (e.g., string)
+  // Add other properties if needed
+}
+
 
 export interface salesOverviewChart {
   series: ApexAxisChartSeries;
@@ -143,7 +153,7 @@ export class AppscrumDashboardComponent {
   months: month[] = [
     { value: 'mar', viewValue: 'Aout 2023' },
     { value: 'apr', viewValue: 'September 2023' },
-    // { value: 'june', viewValue: 'June 2023' },
+    { value: 'june', viewValue: 'Octuber 2023' },
   ];
 
   // recent transaction
@@ -220,19 +230,22 @@ export class AppscrumDashboardComponent {
       rprice: '375',
     },
   ];
+  meetings: Meeting[] = []; // Added the 'meetings' array
 
-  constructor() {
-    // sales overview chart
+  newMeetingDate: string = '';
+  newMeetingTime: string = '';
+  constructor(private http: HttpClient) {
+    // Tasks overview chart
     this.salesOverviewChart = {
       series: [
         {
           name: 'Eanings this month',
-          data: [400, 390, 300, 350, 390, 180, 355, 390],
+          data: [10, 9, 9, 10, 5, 7, 5, 10],
           color: '#5D87FF',
         },
         {
           name: 'Expense this month',
-          data: [280, 250, 325, 215, 250, 310, 280, 250],
+          data: [8, 5, 7, 8, 5, 7, 5, 9],
           color: '#49BEFF',
         },
       ],
@@ -280,7 +293,7 @@ export class AppscrumDashboardComponent {
       yaxis: {
         show: true,
         min: 0,
-        max: 400,
+        max: 10,
         tickAmount: 4,
         labels: {
           style: {
@@ -401,4 +414,36 @@ export class AppscrumDashboardComponent {
       },
     };
   }
+  addMeeting() {
+    if (this.newMeetingDate && this.newMeetingTime) {
+      const formattedDateTime = this.newMeetingDate + 'T' + this.newMeetingTime;
+      const newMeeting: Meeting = {
+        meetdate: formattedDateTime,
+        createdAt: '', // Set based on your requirements
+        updatedAt: '', // Set based on your requirements
+      };
+
+      this.http.post<Meeting>('http://localhost:8080/meetings', newMeeting).subscribe(
+        (response) => {
+          this.meetings.push(response);
+          this.newMeetingDate = '';
+          this.newMeetingTime = '';
+        },
+        (error) => {
+          console.error('Error creating meeting:', error);
+        }
+      );
+    }
+  }
+  
+  getMeetingDate(meetdate: string): string {
+    const date = new Date(meetdate);
+    return date.toLocaleDateString(); // Format and return the date
+  }
+  
+  getMeetingTime(meetdate: string): string {
+    const date = new Date(meetdate);
+    return date.toLocaleTimeString(); // Format and return the time
+  }
+
 }

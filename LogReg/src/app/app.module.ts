@@ -10,14 +10,9 @@ import { CommonModule } from '@angular/common';
 import { PagesRoutes } from './product_owner/pages/pages.routing.module';
 import { PagesRoutesscrum } from './scrum_master/pagesscrum/pages.routing.module';
 import { NgApexchartsModule } from 'ng-apexcharts';
-
 // icons
 import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
-
-// HomePage
-import { HomePageComponent } from './product_owner/pages/homepage/homepage.component';
-
 
 //Import all material modules
 import { MaterialModule } from './material.module';
@@ -54,6 +49,9 @@ import { HeaderComponentdev } from './Developer/layouts/full/header/header.compo
 import { BrandingComponentdev } from './Developer/layouts/full/sidebar/branding.component';
 import { AppNavItemComponentdev } from './Developer/layouts/full/sidebar/nav-item/nav-item.component';
 
+import { HomePageComponent } from './homepage/homepage.component'
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,10 +69,6 @@ import { AppNavItemComponentdev } from './Developer/layouts/full/sidebar/nav-ite
     HeaderComponentscrum,
     BrandingComponentscrum,
     AppNavItemComponentscrum,
-<<<<<<< HEAD
-    //homepage
-    HomePageComponent
-=======
     //Developer components
     FullComponentdev,
     BlankComponentdev,
@@ -82,9 +76,11 @@ import { AppNavItemComponentdev } from './Developer/layouts/full/sidebar/nav-ite
     HeaderComponentdev,
     BrandingComponentdev,
     AppNavItemComponentdev,
->>>>>>> 0325f640b6fb22405c7605073fa8ac72012fb73d
+    HomePageComponent,
   ],
   imports: [
+    MatToolbarModule,
+    MatCardModule,
     MatSelectModule,
     BrowserModule,
     AuthenticationModule,

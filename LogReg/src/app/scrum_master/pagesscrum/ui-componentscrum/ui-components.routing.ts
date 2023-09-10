@@ -2,8 +2,8 @@ import { Routes } from '@angular/router';
 
 // ui
 import { AppBadgescrumComponent } from './badge/badge.component';
-import { AppListsscrumComponent } from './Scrumlists/lists.component';
-import { AppListsscrumDevComponent } from './Developerlists/listsdev.component';
+import { AppListsscrumComponent } from './developerslist/lists.component';
+import { AppListsscrumDevComponent } from './taskslists/listsdev.component';
 
 
 export const UiComponentscrumRoutes: Routes = [

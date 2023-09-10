@@ -16,9 +16,22 @@ import {
   ApexResponsive,
 } from 'ng-apexcharts';
 
+// Import Angular modules
+import { HttpClient } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
+
+
 interface month {
   value: string;
   viewValue: string;
+}
+
+export interface Meeting {
+  meetdate: string; // Use the correct data type for meetdate (e.g., string)
+  createdAt: string; // Use the correct data type for createdAt (e.g., string)
+  updatedAt: string; // Use the correct data type for updatedAt (e.g., string)
+  // Add other properties if needed
 }
 
 export interface salesOverviewChart {
@@ -132,11 +145,12 @@ export class AppOwnerDashboardComponent{
 
   displayedColumns: string[] = ['assigned', 'name', 'priority', 'budget'];
   dataSource = ELEMENT_DATA;
+  
 
   months: month[] = [
-    { value: 'mar', viewValue: 'March 2023' },
-    { value: 'apr', viewValue: 'April 2023' },
-    { value: 'june', viewValue: 'June 2023' },
+    { value: 'mar', viewValue: 'Aout 2023' },
+    { value: 'apr', viewValue: 'September 2023' },
+    { value: 'june', viewValue: 'Octuber 2023' },
   ];
 
   // recent transaction
@@ -169,21 +183,27 @@ export class AppOwnerDashboardComponent{
    
   ];
 
+  meetings: Meeting[] = []; // Added the 'meetings' array
+
+  newMeetingDate: string = '';
+  newMeetingTime: string = '';
+
  
-  constructor() {
+  constructor(private http: HttpClient) {
     // sales overview chart
     this.salesOverviewChart = {
       series: [
         {
           name: 'Eanings this month',
-          data: [355, 390, 300, 350, 390, 180, 355, 390],
+          data: [2,1.5,1,0.5],
           color: '#5D87FF',
         },
         {
           name: 'Expense this month',
-          data: [280, 250, 325, 215, 250, 310, 280, 250],
+          data: [0.5,0.5,0.5,0.3],
           color: '#49BEFF',
         },
+      
       ],
 
       grid: {
@@ -213,14 +233,10 @@ export class AppOwnerDashboardComponent{
       xaxis: {
         type: 'category',
         categories: [
-          '16/08',
-          '17/08',
-          '18/08',
-          '19/08',
-          '20/08',
-          '21/08',
-          '22/08',
-          '23/08',
+          'week 1',
+          'week 2',
+          'week 3',
+          'week 4'
         ],
         labels: {
           style: { cssClass: 'grey--text lighten-2--text fill-color' },
@@ -229,7 +245,7 @@ export class AppOwnerDashboardComponent{
       yaxis: {
         show: true,
         min: 0,
-        max: 400,
+        max: 2,
         tickAmount: 4,
         labels: {
           style: {
@@ -350,4 +366,50 @@ export class AppOwnerDashboardComponent{
       },
     };
   }
+
+  fetchMeetings() {
+    this.http.get<Meeting[]>('http://localhost:8080/meetings').subscribe((meetings) => {
+      this.meetings = meetings;
+    });
+  }
+
+  ngOnInit() {
+    this.fetchMeetings();
+  }
+
+  // Implement the addMeeting function to add new meetings
+  addMeeting() {
+    if (this.newMeetingDate && this.newMeetingTime) {
+      const formattedDateTime = this.newMeetingDate + 'T' + this.newMeetingTime;
+      const newMeeting: Meeting = {
+        meetdate: formattedDateTime,
+        createdAt: '', // Set based on your requirements
+        updatedAt: '', // Set based on your requirements
+      };
+
+      this.http.post<Meeting>('http://localhost:8080/meetings', newMeeting).subscribe(
+        (response) => {
+          this.meetings.push(response);
+          this.newMeetingDate = '';
+          this.newMeetingTime = '';
+        },
+        (error) => {
+          console.error('Error creating meeting:', error);
+        }
+      );
+    }
+  }
+  
+  getMeetingDate(meetdate: string): string {
+    const date = new Date(meetdate);
+    return date.toLocaleDateString(); // Format and return the date
+  }
+  
+  getMeetingTime(meetdate: string): string {
+    const date = new Date(meetdate);
+    return date.toLocaleTimeString(); // Format and return the time
+  }
+
 }
+
+
