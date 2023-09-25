@@ -1,0 +1,35 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Project List</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    
+    <body>
+      <div class="container mt-4">
+        <!-- projects table -->
+        <div class="table-responsive m-t-16">
+          <table class="table mb-4" style="width: 100%; border-radius: 10px;">
+            <thead>
+              <tr>
+                <th>PROJECT NAME</th>
+                <th>STATUS</th>
+                <th>PROGRESS</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr *ngFor="let project of projects">
+                <td>{{ project.name }}</td>
+                <td>{{ project.status }}</td>
+                <td>
+                  <mat-progress-bar mode="determinate" [value]="project.progress"></mat-progress-bar>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+  </mat-card-content>
+</mat-card>

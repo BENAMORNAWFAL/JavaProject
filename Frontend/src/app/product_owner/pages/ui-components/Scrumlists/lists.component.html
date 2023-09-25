@@ -1,0 +1,31 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Scrum Masters List</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <div class="col-lg-8">
+      <mat-card class="cardWithShadow">
+        <mat-card-content class="p-24">
+          <div class="table-responsive m-t-16">
+            <table class="w-100">
+              <thead>
+                <tr>
+                  <th>SCRUM MASTER NAME</th>
+                  <th>LAST UPDATED</th>
+                  <th>PROJECT</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let scrumMaster of scrumMasters">
+                  <td>{{ scrumMaster.name }}</td>
+                  <td>{{ scrumMaster.updated | date: 'short' }}</td>
+                  <td>{{ scrumMaster.project }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-card-content>
+</mat-card>

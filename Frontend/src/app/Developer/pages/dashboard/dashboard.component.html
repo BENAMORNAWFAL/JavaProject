@@ -1,0 +1,84 @@
+<div class="d-flex flex-row" >
+  <mat-card class="cardWithShadow" style="padding: 20px;width: 90%;margin-right: 20px;">
+    
+      <mat-card class="cardWithShadow">
+        <mat-card-header class="d-flex align-items-center p-x-24" class="p-24" style="display: flex; flex-direction: column;">
+          <mat-card-title>Scrum Meetings</mat-card-title>
+
+          <div class="timeline m-t-24">
+            <div class="timeline-item d-flex overflow-hidden">
+              <div class="time text-left mat-subtitle-1 f-s-14">
+                <div class="card-text">Date: Sep 13. 2023</div>
+                <!-- Use 'meetdate' instead of 'datetime' -->
+              </div>
+              <div class="point d-flex align-items-center">
+                <span class="timeline-badge border-success m-y-8"></span>
+                <span class="timline-border d-block"></span>
+              </div>
+              <div class="desc">
+                <div class="card-text">Time: 11:30 AM </div>
+                <!-- Use 'meetdate' instead of 'datetime' -->
+                <!-- You can customize the content here as needed -->
+              </div>
+            </div>
+          </div>
+        </mat-card-header>
+  
+        <apx-chart [series]="monthlyChart.series" [dataLabels]="monthlyChart.dataLabels" [chart]="monthlyChart.chart"
+          [legend]="monthlyChart.legend" [colors]="monthlyChart.colors" [stroke]="monthlyChart.stroke"
+          [tooltip]="monthlyChart.tooltip" [plotOptions]="monthlyChart.plotOptions"
+          [responsive]="monthlyChart.responsive"></apx-chart>
+      </mat-card>
+    
+
+    <div class="table-responsive-1" >
+      <table class="table mb-4" style="border-radius: 10px;margin:auto;">
+        <thead>
+          <tr>
+            <th>User Story</th>
+
+            <th>Priority</th>
+
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let index of Array;let myIndex = index">
+
+
+
+            <td>Task {{myIndex+1}} </td>
+
+            <td *ngIf="myIndex+1<15">High</td>
+            <td *ngIf="myIndex+1>=15 && myIndex+1<30">Medium</td>
+            <td *ngIf="myIndex+1>=30">Low</td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card>
+  <mat-card class="cardWithShadow col-lg-4" style="width: 40%;height: 600px;display: flex;justify-content: end;flex-direction: column;">
+    <div class="chat-container" style="display: flex;flex-direction: column;justify-content: end;">
+      <div class="chat-messages" style="justify-content: flex-end;">
+        <mat-card *ngFor="let message of messages" class="message">
+          <mat-card-header>
+            <mat-card-title>{{ message.sender }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            {{ message.text }}
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button color="warn" (click)="deleteMessage(message)">Delete</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="chat-input">
+        <mat-form-field>
+          <input matInput [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" placeholder="Type a message..." />
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="sendMessage()">Send</button>
+      </div>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,104 @@
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+        <mat-card-title class="m-b-0">Developer List</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1" style=" width: 100%;">
+
+        <div class="table-responsive m-t-16" style="height: 500px;">
+            <table class="table mb-4" style="width: 100%; border-radius: 10px;">
+                <thead>
+                    <tr>
+                        <th>User Story</th>
+                        <th>Availability</th>
+                        <th>Priority</th>
+                        <th>Select Developer</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let index of Array;let myIndex = index">
+
+
+
+                        <td>Task {{myIndex+1}} </td>
+                        <td><input type="radio"> </td>
+                        <td *ngIf="myIndex+1<15">High</td>
+                        <td *ngIf="myIndex+1>=15 && myIndex+1<30">Medium</td>
+                        <td *ngIf="myIndex+1>=30">Low</td>
+                        <td><select name="snack" class="select">
+                                <option value="Developers">Developers</option>
+                                <option value="DEV 1">DEV 1</option>
+                                <option value="DEV 2">DEV 2</option>
+                                <option value="DEV 3">DEV 3</option>
+                                <option value="DEV 4">DEV 4</option>
+                                <option value="DEV 5">DEV 5</option>
+                            </select>
+
+                        </td>
+                        <td>
+                            <button class="green-button">Update</button>
+                            <button class="red-button">Delete</button>
+
+                        </td>
+                    </tr>
+
+                    <tr *ngFor="let data of submittedData; let i=index" >
+
+                        
+
+                        <td>{{ data.task }} </td>
+                        <td><input type="radio"> </td>
+                        <td >{{ data.priority }}</td>
+                        <td><select name="snack" class="select">
+                                <option value="Developers">Developers</option>
+                                <option value="DEV 1">DEV 1</option>
+                                <option value="DEV 2">DEV 2</option>
+                                <option value="DEV 3">DEV 3</option>
+                                <option value="DEV 4">DEV 4</option>
+                                <option value="DEV 5">DEV 5</option>
+                            </select>
+
+                        </td>
+                        <td>
+                            <button class="green-button"  (click)="editTask(i)">Update</button>
+                            <button class="red-button" (click)="deleteTask(i)">Delete</button>
+
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="table-responsive m-t-16">
+            
+        </div>
+
+    </mat-card-content>
+
+</mat-card>
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-content class="b-t-1">
+        <div>
+            <h2>New Task</h2>
+          
+            <form #myForm="ngForm" (ngSubmit)="onSubmit()" style="display: flex;justify-content: space-around; align-items: center;">
+                <mat-form-field>
+                  <mat-label>Task:</mat-label>
+                  <input matInput type="text" id="task" name="task" [(ngModel)]="formData.task" required>
+                </mat-form-field>
+              
+                <mat-form-field>
+                  <mat-label>Priority:</mat-label>
+                  <mat-select id="priority" name="priority" [(ngModel)]="formData.priority" required>
+                    <mat-option value="High">High</mat-option>
+                    <mat-option value="Medium">Medium</mat-option>
+                    <mat-option value="Low">Low</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              
+                <button type="submit" mat-raised-button color="primary">Submit</button>
+              </form>
+          </div>
+    </mat-card-content>
+</mat-card>
